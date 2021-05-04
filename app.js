@@ -20,5 +20,15 @@ app.get('/about',(req,res)=>{
     res.render("About")
 })
 
+//Route for diary page
+app.get('/diary',(req,res)=>{
+    res.render("Diary")
+})
+
+//Route for adding records
+app.get('/add',(req,res)=>{
+    res.render("add")
+})
+
 //Create Server
 app.listen(3000, () => console.log('server running...'))
