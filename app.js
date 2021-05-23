@@ -20,6 +20,9 @@ mongoose.connect(process.env.MONGO_URL, {useNewUrlParser: true,  useUnifiedTopol
     console.log("Connected to MongoDB")
 })
 
+//Import  Diary Model
+const Diary = require('./models/Diary');
+
 
 //ROUTING
 
@@ -45,11 +48,17 @@ app.get('/add',(req,res)=>{
 
 //Route for saving diary
 app.post('/add-to-diary',(req,res)=>{
-    res.send(req.body.title)
+    const Data = new Diary({
+        title:req.body.title,
+        description:req.body.description,
+        date: req.body.date
+    })
+    Data.save().then(()=>{
+        res.redirect('/diary');
+    }).catch(err => console.log(err));
 })
 
 
 //Create Server
 app.listen(3000, () => console.log('server running...'))
 
-//
