@@ -1,7 +1,7 @@
 <%- include('./layout/Header') %>
 <%- include('./layout/Navbar') %>
 
-<div class="add-cointainer">
+<div class="add-container">
     <div class="add">
         <p>Add to Diary</p>
         <a href="/add">Add</a>
@@ -9,9 +9,11 @@
     <div class="diary">
         <% data.forEach((diary)=>{%>
             <div class="diary-container">
-                <h3><%= diary.title %></h3>
-                <p><%= diary.date %></p>
-                <a href="">More</a>
+                <h3>Title: <%= diary.title %></h3>
+                <p>Date: <%= diary.date %></p>
+                <br />
+                <p>Entry: <%= diary.description %></p>
+                <!-- <a href="">More</a> -->
             </div>
     
         <%})  %> 
