@@ -6,8 +6,17 @@
         <p>Add to Diary</p>
         <a href="/add">Add</a>
     </div>
+    <div class="diary">
+        <% data.forEach((diary)=>{%>
+            <div class="diary-container">
+                <h3><%= diary.title %></h3>
+                <p><%= diary.date %></p>
+                <a href="">More</a>
+            </div>
+    
+        <%})  %> 
+    </div>
 </div>
-
 
 
 <%- include('./layout/Footer') %>

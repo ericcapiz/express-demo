@@ -38,7 +38,10 @@ app.get('/about',(req,res)=>{
 
 //Route for diary page
 app.get('/diary',(req,res)=>{
-    res.render("Diary")
+    Diary.find().then(data=>{
+        res.render("Diary",{data})
+    }).catch(err => console.log(err))
+    
 })
 
 //Route for adding to diary
