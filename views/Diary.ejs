@@ -11,9 +11,9 @@
             <div class="diary-container">
                 <h3>Title: <%= diary.title %></h3>
                 <p>Date: <%= diary.date %></p>
+                <p>Date: <%= diary.id %></p>
                 <br />
-                <p>Entry: <%= diary.description %></p>
-                <!-- <a href="">More</a> -->
+                <a href="/diary/<%= data.id %>">More</a>
             </div>
     
         <%})  %> 

@@ -2,6 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const methodOverride = require('method-override');
 
 const app = express();
 dotenv.config();
@@ -14,6 +15,9 @@ app.use(express.static('public'))
 //BodyParser
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
+
+//middleware for override
+app.use(methodOverride('_method'))
 
 //Connect to mongoose
 mongoose.connect(process.env.MONGO_URL, {useNewUrlParser: true,  useUnifiedTopology: true, useCreateIndex: true},() =>{
@@ -49,6 +53,7 @@ app.get('/add',(req,res)=>{
     res.render("add")
 })
 
+
 //Route for saving diary
 app.post('/add-to-diary',(req,res)=>{
     const Data = new Diary({
@@ -61,6 +66,48 @@ app.post('/add-to-diary',(req,res)=>{
     }).catch(err => console.log(err));
 })
 
+//Route for getting diary listing by id
+app.get("/diary/:id", (req,res)=>{
+    Diary.findOne({
+        _id:req.params.id
+    }).then(data => {
+        res.render('Page', {data: data})
+    }).catch(err => console.log(err))
+})
+
+//Route for edit
+app.get('/diary/edit/:id',(res,req)=>{
+    Diary.findOne({
+        _id:req.params.id
+    }).then(data =>{
+        res.render('Edit',{data:data})
+    }).catch(err =>console.log(err))
+
+})
+
+//Edit data
+app.put('/diary/edit/:id',(req,res)=>{
+    Diary.findOne({
+        _id:req.params.id
+    }).then(data =>{
+        data.title = req.body.title
+        data.description = req.body.description
+        data.date = req.body.date
+
+        data.save().then(()=>{
+            res.redirect('/diary')
+        }).catch(err=>console.log(err))
+    }).catch(err=>console.log(err))
+})
+
+//Delete 
+app.delete('/data/delete/:id',(req,res)=>{
+    Diary.remove({
+        _id:req.params.id
+    }).then(()=>{
+        res.redirect('/diary')
+    }).catch(err=>console.log(err))
+})
 
 //Create Server
 app.listen(3000, () => console.log('server running...'))
