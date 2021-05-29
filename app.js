@@ -115,7 +115,7 @@ app.delete('/data/delete/:id',(req,res)=>{
 })
 
 //Create Server
-// const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`\n== API running on port ${PORT} ==\n`);
   });
