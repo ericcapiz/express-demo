@@ -21,8 +21,9 @@ app.use(bodyParser.json())
 //middleware for override
 app.use(methodOverride('_method'))
 
+
 //Connect to mongoose
-mongoose.connect(process.env.MONGO_URL, {useNewUrlParser: true,  useUnifiedTopology: true, useCreateIndex: true},() =>{
+mongoose.connect("mongodb+srv://ericcapiz:akoarmy11@cluster0.xdy0d.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", {useNewUrlParser: true,  useUnifiedTopology: true, useCreateIndex: true},() =>{
     console.log("Connected to MongoDB")
 })
 
