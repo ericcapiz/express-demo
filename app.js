@@ -9,12 +9,12 @@ require('dotenv').config();
 //Templating engine as ejs
 app.set('view engine', 'ejs');
 
-//gtg
+
 
 //Serving Static Files
 app.use(express.static('public'))
 
-//BodyParser
+
 app.use(express.urlencoded({extended: false}))
 app.use(express.json())
 
