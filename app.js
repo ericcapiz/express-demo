@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
+const cors = require("cors");
 
 const app = express();
 dotenv.config();
@@ -21,6 +22,8 @@ app.use(bodyParser.json())
 //middleware for override
 app.use(methodOverride('_method'))
 
+app.use(cors());
+
 //Connect to mongoose
 mongoose.connect(process.env.MONGO_URL, {useNewUrlParser: true,  useUnifiedTopology: true, useCreateIndex: true},() =>{
     console.log("Connected to MongoDB")
@@ -28,6 +31,7 @@ mongoose.connect(process.env.MONGO_URL, {useNewUrlParser: true,  useUnifiedTopol
 
 //Import  Diary Model
 const Diary = require('./models/Diary');
+
 
 
 //ROUTING
