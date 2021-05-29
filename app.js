@@ -76,7 +76,7 @@ app.get("/diary/:id", (req,res)=>{
 })
 
 //Route for edit
-app.get('/diary/edit/:id',(res,req)=>{
+app.get('/diary/edit/:id',(req,res)=>{
     Diary.findOne({
         _id:req.params.id
     }).then(data =>{
