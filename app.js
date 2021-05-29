@@ -1,11 +1,11 @@
 const express = require('express');
-const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 const cors = require("cors");
 
 const app = express();
-dotenv.config();
+require('dotenv').config();
+
 //Templating engine as ejs
 app.set('view engine', 'ejs');
 
