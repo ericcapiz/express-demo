@@ -1,6 +1,5 @@
 const express = require('express');
 const dotenv = require('dotenv');
-const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 const cors = require("cors");
@@ -16,8 +15,8 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'))
 
 //BodyParser
-app.use(bodyParser.urlencoded({extended: false}))
-app.use(bodyParser.json())
+app.use(express.urlencoded({extended: false}))
+app.use(express.json())
 
 //middleware for override
 app.use(methodOverride('_method'))
