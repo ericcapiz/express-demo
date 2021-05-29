@@ -55,7 +55,7 @@ app.get('/diary',(req,res)=>{
 
 //Route for adding to diary
 app.get('/add',(req,res)=>{
-    res.render("add")
+    res.render("Add")
 })
 
 
